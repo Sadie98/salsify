@@ -11,6 +11,7 @@ export const operatorsMock = [
         text: 'Is less than',
         id: 'less_than'
     },
+    // wat?)))
     {
         text: 'Has any value',
         id: 'any'
