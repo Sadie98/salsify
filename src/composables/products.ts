@@ -1,12 +1,12 @@
 import { defineStore } from "pinia";
-import { productsMock } from '@/mocks/products.ts';
 import { operatorsMock } from '@/mocks/operators.ts';
 import { propertiesMock } from '@/mocks/properties.ts';
 import {column, columnData, columnsTitles, product, propertyValue, tableHeaders,} from "../types/types.ts";
+import {getProducts} from "../helpers/getProducts.ts";
 
 export const useProductsStore = defineStore('Products', {
     state: () => ({
-        products: productsMock,
+        products: getProducts(), // I didn't like default mapping
         properties: propertiesMock,
         operators: operatorsMock,
     }),
@@ -33,20 +33,25 @@ export const useProductsStore = defineStore('Products', {
 
           return res;
         },
-        getProducts: function(state) {
-            const store = this;
-
-            return state.products.map(function(product: product){
-                const columns:columnData = {};
-
-                product.property_values.forEach(function(property: propertyValue){
-                    columns[store.getColumnTitles[property.property_id]] = property.value;
-                });
-
-                return columns;
-            });
-        },
+        getProducts: (state) => state.products,
         getProperties: (state) => state.properties,
         getOperators: (state) => state.operators,
+    },
+    actions: {
+        filterByEqual(value, propertyName){
+            this.products = getProducts().filter((product) => product[propertyName] == value);
+        },
+        filterByGreater(value, propertyName){
+            this.products = getProducts().filter((product) => product[propertyName] >= value);
+        },
+        filterByLess(value, propertyName){
+            this.products = getProducts().filter((product) => product[propertyName] <= value);
+        },
+        filterByNone(value, propertyName){
+            this.products = getProducts().filter((product) => product[propertyName] != value);
+        },
+        resetProducts(){
+            this.products = getProducts();
+        }
     }
 })
