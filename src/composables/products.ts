@@ -50,6 +50,12 @@ export const useProductsStore = defineStore('Products', {
         filterByNone(value, propertyName){
             this.products = getProducts().filter((product) => product[propertyName] != value);
         },
+        filterByContains(value, propertyName){
+            this.products = getProducts().filter((product) => product[propertyName].includes(value));
+        },
+        filterBySeveral(values, propertyName){
+            this.products = getProducts().filter((product) => values.includes(product[propertyName]));
+        },
         resetProducts(){
             this.products = getProducts();
         }

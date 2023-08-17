@@ -1,4 +1,4 @@
-import {column, columns} from "../types/types.ts";
+import {column} from "../types/types.ts";
 
 export const propertiesMock: column[] = [
     {
