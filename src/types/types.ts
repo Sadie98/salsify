@@ -11,14 +11,8 @@ export interface propertyValue {
 export interface column {
     id: number,
     name: string,
-    type: columnType,
-    values: string[]
-}
-
-export enum columnType {
-    'enumerated',
-    'number',
-    'string'
+    type: string,
+    values?: string[]
 }
 
 export interface columnsTitles {

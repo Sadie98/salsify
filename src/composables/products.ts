@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
-import { operatorsMock } from '@/mocks/operators.ts';
+import { operatorsMock } from "@/mocks/operators.ts";
 import { propertiesMock } from '@/mocks/properties.ts';
-import {column, columnData, columnsTitles, product, propertyValue, tableHeaders,} from "../types/types.ts";
+import {column, columnsTitles, tableHeaders,} from "../types/types.ts";
 import {getProducts} from "../helpers/getProducts.ts";
 
 export const useProductsStore = defineStore('Products', {
@@ -38,22 +38,22 @@ export const useProductsStore = defineStore('Products', {
         getOperators: (state) => state.operators,
     },
     actions: {
-        filterByEqual(value, propertyName){
+        filterByEqual(value: string, propertyName: string):void{
             this.products = getProducts().filter((product) => product[propertyName] == value);
         },
-        filterByGreater(value, propertyName){
+        filterByGreater(value: string, propertyName: string): void{
             this.products = getProducts().filter((product) => product[propertyName] >= value);
         },
-        filterByLess(value, propertyName){
+        filterByLess(value: string, propertyName: string): void{
             this.products = getProducts().filter((product) => product[propertyName] <= value);
         },
-        filterByNone(value, propertyName){
+        filterByNone(value: string, propertyName: string): void{
             this.products = getProducts().filter((product) => product[propertyName] != value);
         },
-        filterByContains(value, propertyName){
+        filterByContains(value: string, propertyName: string): void{
             this.products = getProducts().filter((product) => product[propertyName].includes(value));
         },
-        filterBySeveral(values, propertyName){
+        filterBySeveral(values: string[], propertyName: string): void{
             this.products = getProducts().filter((product) => values.includes(product[propertyName]));
         },
         resetProducts(){

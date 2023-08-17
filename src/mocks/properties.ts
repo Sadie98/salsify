@@ -4,7 +4,7 @@ export const propertiesMock: column[] = [
     {
         id: 0,
         name: 'Product Name',
-        type: 'string'
+        type: 'string',
     },
     {
         id: 1,

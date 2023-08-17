@@ -58,13 +58,14 @@ function setOperator(operator){
   if (operator.id === 'any') {
     isValueOptionsVisible.value = false;
   } else {
+    console.log(productsStore.getProducts)
+    console.log(propertySelected.value.name)
     valuesAvailable.value = getOperatorValuesEqual(productsStore.getProducts, propertySelected.value.name);
     isValueOptionsVisible.value = true;
   }
 
   if (operator.id === 'in') {
     let options = valuesAvailable.value.map(value => {
-      console.log(value);
       return {
         text: value,
         value: value,
@@ -111,12 +112,11 @@ function clearAll(){
   productsStore.resetProducts();
   resetValues();
   resetOperator();
-  propertySelected.value.id = -1;
 }
 </script>
 
 <template lang="pug">
-div(class="dropdown b-dropdown btn-group")
+div(class="btn-group")
   b-dropdown(id="dropdown-property" :text="propertySelected.name" variant="primary" class="m-md-2")
     b-dropdown-item(v-for="item in productsStore.getProperties" @click="setProperty(item)") {{ item.name }}
 
