@@ -15,7 +15,6 @@ export const useProductsStore = defineStore('Products', {
 
             const columnsTitles:columnsTitles = {};
 
-            console.log(filtersStore.getProperties);
             filtersStore.getProperties.forEach((property: column) => {
                 columnsTitles[property.id] = property.name;
             });
@@ -47,16 +46,16 @@ export const useProductsStore = defineStore('Products', {
         },
         filterByLess(value: string, propertyName: string): void{
             this.products = getProducts().filter((product) => product[propertyName] <= value);
-        },
+            },
         filterByNone(value: string, propertyName: string): void{
             this.products = getProducts().filter((product) => product[propertyName] != value);
-        },
+            },
         filterByContains(value: string, propertyName: string): void{
             this.products = getProducts().filter((product) => product[propertyName].includes(value));
-        },
+            },
         filterBySeveral(values: string[], propertyName: string): void{
             this.products = getProducts().filter((product) => values.includes(product[propertyName]));
-        },
+            },
         resetProducts(){
             this.products = getProducts();
         }

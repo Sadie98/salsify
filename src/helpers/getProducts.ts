@@ -1,6 +1,8 @@
 import {column, columnData, columnsTitles, propertyValue} from "../types/types.ts";
 import {propertiesMock} from "../mocks/properties.ts";
 import {productsMock} from "../mocks/products.ts";
+import { useFiltersStore } from "@/composables/filters.ts";
+
 
 export function getProducts() {
     return productsMock.map(function(product){
@@ -15,9 +17,11 @@ export function getProducts() {
 };
 
 function getColumnTitles():columnsTitles {
+    const filtersStore = useFiltersStore();
+
     const columnsTitles: columnsTitles = {};
 
-    propertiesMock.forEach((property: column) => {
+    filtersStore.getProperties.forEach((property: column) => {
         columnsTitles[property.id] = property.name;
     });
 
