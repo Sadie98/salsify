@@ -30,9 +30,9 @@ export const useFiltersStore = defineStore('Filters', {
         getPropertySelected: (state) => { return state.propertySelected },
         getOperators: (state) => { return state.operators },
         getOperatorSelected: (state) => { return state.operatorSelected },
-        getOptions: (state) => { console.log(state.options); return state.options },
+        getOptions: (state) => { return state.options },
         getOptionSelected: (state) => { return state.optionSelected },
-        getIsOptionsVisible: (state) => { console.log(state.isOptionsVisible); return state.isOptionsVisible },
+        getIsOptionsVisible: (state) => { return state.isOptionsVisible },
     },
     actions: {
         setProperty(item){
@@ -41,9 +41,9 @@ export const useFiltersStore = defineStore('Filters', {
             productsStore.resetProducts();
             this.resetOptions();
 
-            this.propertySelected = item;
+            this.propertySelected = {...item};
 
-            this.operators = this.getOperators.filter((operator) => {
+            this.operators = operatorsMock.filter((operator) => {
                 return propertyToOperator[item.type].includes(operator.id);
             });
         },
@@ -74,7 +74,6 @@ export const useFiltersStore = defineStore('Filters', {
         },
         setOption(value){
             const productsStore = useProductsStore();
-            this.options = [];
 
             this.optionSelected.text = value;
 

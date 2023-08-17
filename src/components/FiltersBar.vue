@@ -1,22 +1,17 @@
 <script setup lang="ts">
 import { useProductsStore } from "@/composables/products.ts";
+import { useFiltersStore } from "@/composables/filters.ts";
 import PropertyDropdown from "@/components/FiltersBar/PropertyDropdown.vue";
 import OperatorDropdown from "@/components/FiltersBar/OperatorDropdown.vue";
 import OptionsDropdown from "@/components/FiltersBar/OptionsDropdown.vue";
-import { useFiltersStore } from "@/composables/filters.ts";
 
 const filtersStore = useFiltersStore();
 const productsStore = useProductsStore();
 
-// watch(valuesSelected, (value) => {
-//   productsStore.filterBySeveral(value, propertySelected.value.name);
-//   valuesSelectedTitle.value = valuesSelected.value.join(',');
-// })
-
 function clearAll(){
   filtersStore.resetOptions();
   filtersStore.resetOperator();
-  // filtersStore.resetProperties();
+  filtersStore.resetProperties();
   productsStore.resetProducts();
 }
 </script>
