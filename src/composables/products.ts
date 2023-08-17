@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
-import { operatorsMock } from "@/mocks/operators.ts";
-import { propertiesMock } from '@/mocks/properties.ts';
+import { propertiesMock } from '../mocks/properties.ts';
 import {column, columnsTitles, tableHeaders,} from "../types/types.ts";
 import {getProducts} from "../helpers/getProducts.ts";
 import {useFiltersStore} from "./filters.ts";
@@ -11,7 +10,7 @@ export const useProductsStore = defineStore('Products', {
         properties: propertiesMock,
     }),
     getters: {
-        getColumnTitles: (state) => {
+        getColumnTitles: () => {
             const filtersStore = useFiltersStore();
 
             const columnsTitles:columnsTitles = {};

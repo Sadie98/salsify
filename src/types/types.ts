@@ -1,8 +1,3 @@
-export interface product {
-    id: number;
-    property_values: propertyValue[],
-}
-
 export interface propertyValue {
     property_id: number,
     value: string,
@@ -28,8 +23,7 @@ export interface tableHeaders {
     sortable: boolean,
 }
 
-export interface property {
+export interface operator {
     id: number,
-    name: string,
-    type: string,
+    text: string,
 }

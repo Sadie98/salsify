@@ -5,6 +5,7 @@ import {operatorsMock} from "../mocks/operators.ts";
 import {propertyToOperator} from "../mocks/propertyToOperator.ts";
 import { useProductsStore } from "@/composables/products.ts";
 import {getOperatorValuesEqual} from "../helpers/getOperatorValues.ts";
+import {column, operator} from "../types/types.ts";
 
 export const useFiltersStore = defineStore('Filters', {
     state: () => ({
@@ -35,7 +36,7 @@ export const useFiltersStore = defineStore('Filters', {
         getIsOptionsVisible: (state) => { return state.isOptionsVisible },
     },
     actions: {
-        setProperty(item){
+        setProperty(item: column){
             const productsStore = useProductsStore();
 
             productsStore.resetProducts();
@@ -43,11 +44,11 @@ export const useFiltersStore = defineStore('Filters', {
 
             this.propertySelected = {...item};
 
-            this.operators = operatorsMock.filter((operator) => {
+            this.operators = operatorsMock.filter((operator: operator) => {
                 return propertyToOperator[item.type].includes(operator.id);
             });
         },
-        setOperator(operator) {
+        setOperator(operator: operator) {
             const productsStore = useProductsStore();
 
             productsStore.resetProducts();
