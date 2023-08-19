@@ -13,4 +13,4 @@ export const property3 = 'weight (oz)';
 
 export const res1 = ['Headphones', 'Cell Phone', 'Keyboard', 'Cup', 'Key', 'Hammer'];
 export const res2 = ['black', 'grey', 'white', 'silver', 'brown'];
-export const res3 = [5, 3, 1, 19];
+export const res3 = [1, 3, 5, 19];

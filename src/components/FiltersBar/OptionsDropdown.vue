@@ -20,7 +20,13 @@ watch(valuesSelected, (value) => {
 </script>
 
 <template lang="pug">
-b-dropdown(id="dropdown-value" variant="primary" :text="filtersStore.getOptionSelected.text" class="m-md-2" v-if="filtersStore.getIsOptionsVisible")
+b-dropdown(
+  id="dropdown-value"
+  variant="primary"
+  :text="filtersStore.getOptionSelected.text"
+  class="m-md-2"
+  v-if="filtersStore.getIsOptionsVisible"
+)
   b-dropdown-item(
     v-for="value in filtersStore.getOptions"
     @click="filtersStore.setOption(value)"
@@ -40,7 +46,3 @@ b-dropdown(id="dropdown-value" variant="primary" :text="filtersStore.getOptionSe
     name="valuesCheckbox"
   ) {{ valuesSelectedTitle }}
 </template>
-
-<style scoped lang="scss">
-
-</style>

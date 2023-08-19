@@ -108,7 +108,7 @@ export const useFiltersStore = defineStore('Filters', {
                 id: -1,
             }
         },
-        resetOptions(){
+        resetOptions(){ // this may be private, but Pinia doesn't support it
             this.isOptionsVisible = false;
             this.options = [];
             this.optionSelected.text = dropdownValuePlaceholder;

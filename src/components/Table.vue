@@ -9,7 +9,3 @@ div
   BTable(striped hover bordered :items="productsStore.getProducts" :fields="productsStore.getFields")
 
 </template>
-
-<style scoped>
-
-</style>

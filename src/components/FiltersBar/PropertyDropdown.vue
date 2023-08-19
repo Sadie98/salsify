@@ -9,7 +9,3 @@ b-dropdown(id="dropdown-property" :text="filtersStore.getPropertySelected.name" 
   b-dropdown-item(v-for="item in filtersStore.getProperties" @click="filtersStore.setProperty(item)") {{ item.name }}
 
 </template>
-
-<style scoped lang="scss">
-
-</style>

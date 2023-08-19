@@ -46,16 +46,16 @@ export const useProductsStore = defineStore('Products', {
         },
         filterByLess(value: string, propertyName: string): void{
             this.products = getProducts().filter((product) => product[propertyName] < value);
-            },
+        },
         filterByNone(value: string, propertyName: string): void{
             this.products = getProducts().filter((product) => product[propertyName] != value);
-            },
+        },
         filterByContains(value: string, propertyName: string): void{
             this.products = getProducts().filter((product) => product[propertyName].toLowerCase().includes(value.toLowerCase()));
-            },
+        },
         filterBySeveral(values: string[], propertyName: string): void{
             this.products = getProducts().filter((product) => values.includes(product[propertyName]));
-            },
+        },
         resetProducts(){
             this.products = getProducts();
         }

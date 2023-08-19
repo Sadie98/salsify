@@ -15,14 +15,14 @@ function clearAll(){
 </script>
 
 <template lang="pug">
-div(class="btn-group")
+.btn-group
   PropertyDropdown
   OperatorDropdown
   OptionsDropdown
   b-button(@click="clearAll" variant="success" class="m-md-2") Clear
 </template>
 
-<style lang="scss">
+<style lang="scss"> // not scoped, sth wrong with b-buttons
 .btn-content {
   display: inline;
 }
