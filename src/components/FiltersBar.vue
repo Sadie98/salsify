@@ -9,9 +9,7 @@ const filtersStore = useFiltersStore();
 const productsStore = useProductsStore();
 
 function clearAll(){
-  filtersStore.resetOptions();
-  filtersStore.resetOperator();
-  filtersStore.resetProperties();
+  filtersStore.resetAllFilters();
   productsStore.resetProducts();
 }
 </script>

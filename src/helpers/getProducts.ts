@@ -1,11 +1,16 @@
 import {column, columnData, columnsTitles, propertyValue} from "../types/types.ts";
-import {propertiesMock} from "../mocks/properties.ts";
 import {productsMock} from "../mocks/products.ts";
 import { useFiltersStore } from "@/composables/filters.ts";
 
-
+// I didn't like data format I've got, so I made mapping with caching.
+// It depends on server side, but in my case session storage is ok for caching.
+// I'll call this function a lot, so I don't want to calculate it million times
 export function getProducts() {
-    return productsMock.map(function(product){
+    const productsFromStorage = sessionStorage.getItem("products");
+
+    if (productsFromStorage) return JSON.parse(productsFromStorage);
+
+    const res =  productsMock.map(function(product){
         const columns:columnData = {};
 
         product.property_values.forEach(function(property: propertyValue): void{
@@ -14,6 +19,9 @@ export function getProducts() {
 
         return columns;
     });
+
+    sessionStorage.setItem("products", JSON.stringify(res));
+    return res;
 };
 
 function getColumnTitles():columnsTitles {

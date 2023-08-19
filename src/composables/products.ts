@@ -42,16 +42,16 @@ export const useProductsStore = defineStore('Products', {
             this.products = getProducts().filter((product) => product[propertyName] == value);
         },
         filterByGreater(value: string, propertyName: string): void{
-            this.products = getProducts().filter((product) => product[propertyName] >= value);
+            this.products = getProducts().filter((product) => product[propertyName] > value);
         },
         filterByLess(value: string, propertyName: string): void{
-            this.products = getProducts().filter((product) => product[propertyName] <= value);
+            this.products = getProducts().filter((product) => product[propertyName] < value);
             },
         filterByNone(value: string, propertyName: string): void{
             this.products = getProducts().filter((product) => product[propertyName] != value);
             },
         filterByContains(value: string, propertyName: string): void{
-            this.products = getProducts().filter((product) => product[propertyName].includes(value));
+            this.products = getProducts().filter((product) => product[propertyName].toLowerCase().includes(value.toLowerCase()));
             },
         filterBySeveral(values: string[], propertyName: string): void{
             this.products = getProducts().filter((product) => values.includes(product[propertyName]));

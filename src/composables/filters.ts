@@ -117,6 +117,11 @@ export const useFiltersStore = defineStore('Filters', {
             this.propertySelected.id = -1;
             this.propertySelected.type = 'any';
             this.propertySelected.name = dropdownPropertyPlaceholder;
+        },
+        resetAllFilters() {
+            this.resetProperties()
+            this.resetOperator();
+            this.resetOptions();
         }
     }
 });
