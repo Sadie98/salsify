@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useFiltersStore } from "@/composables/filters.ts";
 import { useProductsStore } from "@/composables/products.ts";
-import {ref, watch} from "vue";
+import { ref, watch } from "vue";
 
 const filtersStore = useFiltersStore();
 const productsStore = useProductsStore();
@@ -12,11 +12,10 @@ const valuesSelected = ref([]);
 watch(valuesSelected, (value) => {
   productsStore.filterBySeveral(value, filtersStore.getPropertySelected.name);
 
-  valuesSelectedTitle.value = valuesSelected.value.join(',');
+  valuesSelectedTitle.value = valuesSelected.value.join(",");
 
   filtersStore.setOption(valuesSelectedTitle.value);
-})
-
+});
 </script>
 
 <template lang="pug">

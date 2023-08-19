@@ -1,31 +1,31 @@
 export const operatorsMock = [
-    {
-        text: 'Equals',
-        id: 'equals'
-    },
-    {
-        text: 'Is greater than',
-        id: 'greater_than'
-    },
-    {
-        text: 'Is less than',
-        id: 'less_than'
-    },
-    // wat?)))
-    {
-        text: 'Has any value',
-        id: 'any'
-    },
-    {
-        text: 'Has no value',
-        id: 'none'
-    },
-    {
-        text: 'Is any of',
-        id: 'in'
-    },
-    {
-        text: 'Contains',
-        id: 'contains'
-    }
+  {
+    text: "Equals",
+    id: "equals",
+  },
+  {
+    text: "Is greater than",
+    id: "greater_than",
+  },
+  {
+    text: "Is less than",
+    id: "less_than",
+  },
+  // wat?)))
+  {
+    text: "Has any value",
+    id: "any",
+  },
+  {
+    text: "Has no value",
+    id: "none",
+  },
+  {
+    text: "Is any of",
+    id: "in",
+  },
+  {
+    text: "Contains",
+    id: "contains",
+  },
 ];

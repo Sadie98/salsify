@@ -8,7 +8,7 @@ import OptionsDropdown from "@/components/FiltersBar/OptionsDropdown.vue";
 const filtersStore = useFiltersStore();
 const productsStore = useProductsStore();
 
-function clearAll(){
+function clearAll() {
   filtersStore.resetAllFilters();
   productsStore.resetProducts();
 }
@@ -22,7 +22,8 @@ function clearAll(){
   b-button(@click="clearAll" variant="success" class="m-md-2") Clear
 </template>
 
-<style lang="scss"> // not scoped, sth wrong with b-buttons
+<style lang="scss">
+// not scoped, sth wrong with b-buttons
 .btn-content {
   display: inline;
 }

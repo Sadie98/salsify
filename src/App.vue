@@ -4,8 +4,13 @@ import FiltersBar from "./components/FiltersBar.vue";
 </script>
 
 <template lang="pug">
-div
+.app
   FiltersBar
   Table
 
 </template>
+<style scoped lang="scss">
+.app {
+  margin: 60px;
+}
+</style>

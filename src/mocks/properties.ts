@@ -1,38 +1,31 @@
-import {column} from "../types/types.ts";
+import { column } from "../types/types.ts";
 
 export const propertiesMock: column[] = [
-    {
-        id: 0,
-        name: 'Product Name',
-        type: 'string',
-    },
-    {
-        id: 1,
-        name: 'color',
-        type: 'string'
-    },
-    {
-        id: 2,
-        name: 'weight (oz)',
-        type: 'number'
-    },
-    {
-        id: 3,
-        name: 'category',
-        type: 'enumerated',
-        values: [
-            'tools',
-            'electronics',
-            'kitchenware'
-        ]
-    },
-    {
-        id: 4,
-        name: 'wireless',
-        type: 'enumerated',
-        values: [
-            'true',
-            'false'
-        ]
-    }
+  {
+    id: 0,
+    name: "Product Name",
+    type: "string",
+  },
+  {
+    id: 1,
+    name: "color",
+    type: "string",
+  },
+  {
+    id: 2,
+    name: "weight (oz)",
+    type: "number",
+  },
+  {
+    id: 3,
+    name: "category",
+    type: "enumerated",
+    values: ["tools", "electronics", "kitchenware"],
+  },
+  {
+    id: 4,
+    name: "wireless",
+    type: "enumerated",
+    values: ["true", "false"],
+  },
 ];

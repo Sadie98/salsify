@@ -37,7 +37,8 @@ As I mentioned, I made this project in 1,5 working days. That's what I did by ho
 - **11 hour** - final refactoring
 - **12 hour** - deployment
 
-## My general thoughts
+## How I solved it
+
 - First of all, I read a description, it was long, so I opened images (I love images). There I understood I need table component and dropdowns (two of them advanced)
 - So, without reading other description, I implemented table and filled it with data
 - After it I needed to reread description again and understand how filters work.
@@ -47,5 +48,5 @@ As I mentioned, I made this project in 1,5 working days. That's what I did by ho
 - In the end I deployed project in Digital Ocean (I hope you will appreciate!)
 
 ## My general thoughts
-All in all, it was interesting task, and I made this project to be clear and scalable. It would be possible to do it faster, but less efficiently, and it could take longer and more efficiently. Nevertheless, it seemed to me that my solution is the perfect balance for a test task.
 
+All in all, it was interesting task, and I made this project to be clear and scalable. It would be possible to do it faster, but less efficiently, and it could take longer and more efficiently. Nevertheless, it seemed to me that my solution is the perfect balance for a test task.

@@ -6,6 +6,6 @@ const productsStore = useProductsStore();
 
 <template lang="pug">
 div
-  BTable(striped hover bordered :items="productsStore.getProducts" :fields="productsStore.getFields")
+  BTable(striped sortable hover bordered :items="productsStore.getProducts" :fields="productsStore.getFields")
 
 </template>
