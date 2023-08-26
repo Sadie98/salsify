@@ -65,6 +65,7 @@ describe("Products store", () => {
 
   it("filterBySeveral", () => {
     const productsStore = useProductsStore();
+    console.log(productsStore.products);
     expect(productsStore.products).toEqual(products);
     productsStore.filterBySeveral(value6, propertyName6);
     expect(productsStore.products).toEqual(res6);

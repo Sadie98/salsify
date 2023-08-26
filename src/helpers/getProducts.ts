@@ -13,13 +13,13 @@ export function getProducts(): product[] {
 
   if (productsFromStorage) return JSON.parse(productsFromStorage);
 
-  let res:product[] = [];
-  res = productsMock.map(function (product: productOriginal) {
-    const columns: product = {"Product Name": "", "weight (oz)": 0, 'category': "", 'color': ""};
+  let res: product[] = productsMock.map((product: productOriginal) => {
+    const columns = {} as product;
 
-    product.property_values.forEach(function (property: propertyValue): void {
+    product.property_values.forEach((property: propertyValue) => {
       const columnTitles: columnsTitles = getColumnTitles();
       const currentTitle: productKeys = columnTitles[property.property_id];
+      // @ts-ignore
       columns[currentTitle] = property.value;
     });
 
@@ -27,6 +27,7 @@ export function getProducts(): product[] {
   });
 
   sessionStorage.setItem("products", JSON.stringify(res));
+
   return res;
 }
 

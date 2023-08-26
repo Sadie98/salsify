@@ -65,6 +65,7 @@ export const useProductsStore = defineStore("Products", {
     filterBySeveral: function (values: string[] | number[] | boolean[], propertyName: productKeys): void {
       this.products = getProducts().filter((product:product) => {
             let productPropertyValue:string = product[propertyName]?.toString() || '';
+            // @ts-ignore
             return values.includes(productPropertyValue);
           }
       );

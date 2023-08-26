@@ -12,7 +12,7 @@ export function getOperatorValuesEqual(
 
   const res = Array.from(resUnique);
 
-  if (typeof res[0] === "number") {
+  if (typeof Number.parseInt(res[0]) === "number") {
     return res.sort(function (a, b) {
       return Number.parseInt(a) - Number.parseInt(b);
     });
