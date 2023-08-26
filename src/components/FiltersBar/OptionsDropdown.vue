@@ -22,24 +22,24 @@ watch(valuesSelected, (value) => {
 b-dropdown(
   id="dropdown-value"
   variant="primary"
-  :text="filtersStore.getOptionSelected.text"
+  :text="filtersStore.getOptionSelected"
   class="m-md-2"
   v-if="filtersStore.getIsOptionsVisible"
 )
   b-dropdown-item(
     v-for="value in filtersStore.getOptions"
     @click="filtersStore.setOption(value)"
-    v-if="filtersStore.getOperatorSelected.text !== 'Is any of' && filtersStore.getOperatorSelected.text !== 'Contains'"
+    v-if="filtersStore.getOperatorSelected !== 'Is any of' && filtersStore.getOperatorSelected !== 'Contains'"
   ) {{ value }}
   b-form-input(
     id="dropdown-contains"
     size="sm"
-    v-if="filtersStore.getOperatorSelected.text === 'Contains'"
+    v-if="filtersStore.getOperatorSelected === 'Contains'"
     @input="filtersStore.setOption"
   )
   b-form-checkbox-group(
     id="checkbox-group-1"
-    v-if="filtersStore.getOperatorSelected.text === 'Is any of'"
+    v-if="filtersStore.getOperatorSelected === 'Is any of'"
     v-model="valuesSelected"
     :options="filtersStore.getOptions"
     name="valuesCheckbox"

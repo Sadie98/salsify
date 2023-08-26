@@ -1,17 +1,19 @@
 export interface propertyValue {
   property_id: number;
-  value: string;
+  value: string | number | boolean;
 }
 
-export interface column {
+export interface IColumn {
   id: number;
-  name: string;
-  type: string;
+  name: productKeys;
+  type: columnType;
   values?: string[];
 }
 
+export type columnType = 'number' | 'boolean' | 'string' | 'enumerated'
+
 export interface columnsTitles {
-  [key: number]: string;
+  [key: number]: productKeys;
 }
 
 export interface columnData {
@@ -23,7 +25,7 @@ export interface tableHeaders {
 }
 
 export interface operator {
-  id: number;
+  id: string;
   text: string;
 }
 
@@ -33,4 +35,32 @@ export interface product {
   "weight (oz)": number;
   category: string;
   wireless?: boolean;
+}
+
+export type productKeys = keyof product;
+
+export interface productOriginal {
+  id: number,
+  property_values: Array<propertyValue>
+}
+
+export interface IPropertyToOperator {
+  [key: string]: string[]
+}
+
+interface propertyOriginal {
+  id: number,
+  name: string,
+  type: columnType
+}
+
+
+export interface filtersState {
+  properties: propertyOriginal,
+  propertySelected: string,
+  operators: operator[],
+  operatorSelected: operator,
+  options: operator[],
+  optionSelected: operator,
+  isOptionsVisible: boolean,
 }

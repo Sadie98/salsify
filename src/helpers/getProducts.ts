@@ -1,12 +1,9 @@
 import {
-  column,
-  columnData,
-  columnsTitles,
-  product,
+  columnsTitles, IColumn, product, productKeys, productOriginal,
   propertyValue,
 } from "../types/types.ts";
 import { productsMock } from "../mocks/products.ts";
-import { useFiltersStore } from "@/composables/filters.ts";
+import { useFiltersStore } from "../composables/filters.ts";
 
 // I didn't like data format I've got, so I made mapping with caching.
 // It depends on server side, but in my case session storage is ok for caching.
@@ -16,11 +13,14 @@ export function getProducts(): product[] {
 
   if (productsFromStorage) return JSON.parse(productsFromStorage);
 
-  const res = productsMock.map(function (product) {
-    const columns: columnData = {};
+  let res:product[] = [];
+  res = productsMock.map(function (product: productOriginal) {
+    const columns: product = {"Product Name": "", "weight (oz)": 0, 'category': "", 'color': ""};
 
     product.property_values.forEach(function (property: propertyValue): void {
-      columns[getColumnTitles()[property.property_id]] = property.value;
+      const columnTitles: columnsTitles = getColumnTitles();
+      const currentTitle: productKeys = columnTitles[property.property_id];
+      columns[currentTitle] = property.value;
     });
 
     return columns;
@@ -35,7 +35,7 @@ function getColumnTitles(): columnsTitles {
 
   const columnsTitles: columnsTitles = {};
 
-  filtersStore.getProperties.forEach((property: column) => {
+  filtersStore.getProperties.forEach((property: IColumn) => {
     columnsTitles[property.id] = property.name;
   });
 

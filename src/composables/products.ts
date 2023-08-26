@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { propertiesMock } from "../mocks/properties.ts";
-import { column, columnsTitles, tableHeaders } from "../types/types.ts";
+import {columnsTitles, IColumn, product, productKeys, tableHeaders} from "../types/types.ts";
 import { getProducts } from "../helpers/getProducts.ts";
 import { useFiltersStore } from "./filters.ts";
 
@@ -15,7 +15,7 @@ export const useProductsStore = defineStore("Products", {
 
       const columnsTitles: columnsTitles = {};
 
-      filtersStore.getProperties.forEach((property: column) => {
+      filtersStore.getProperties.forEach((property: IColumn) => {
         columnsTitles[property.id] = property.name;
       });
 
@@ -35,34 +35,38 @@ export const useProductsStore = defineStore("Products", {
     getProperties: (state) => state.properties,
   },
   actions: {
-    filterByEqual(value: string, propertyName: string): void {
+    filterByEqual(value: string, propertyName: productKeys): void {
       this.products = getProducts().filter(
         (product) => product[propertyName] == value,
       );
     },
-    filterByGreater(value: number, propertyName: string): void {
+    filterByGreater(value: number, propertyName: productKeys): void {
       this.products = getProducts().filter(
-        (product) => product[propertyName] > value,
+        (product) => Number.parseInt(<string>product[propertyName]) > value,
       );
     },
-    filterByLess(value: number, propertyName: string): void {
+    filterByLess(value: number, propertyName: productKeys): void {
+      if (!propertyName) throw Error();
+
       this.products = getProducts().filter(
-        (product) => product[propertyName] < value,
+        (product) => Number.parseInt(<string>product[propertyName]) < value,
       );
     },
-    filterByNone(value: string, propertyName: string): void {
+    filterByNone(value: string, propertyName: productKeys): void {
       this.products = getProducts().filter(
-        (product) => product[propertyName] != value,
+        (product) => <string>product[propertyName] != value
       );
     },
-    filterByContains(value: string, propertyName: string): void {
+    filterByContains(value: string, propertyName: productKeys): void {
       this.products = getProducts().filter((product) =>
-        product[propertyName].toLowerCase().includes(value.toLowerCase()),
+          (<string>product[propertyName]).toLowerCase().includes(value.toLowerCase()),
       );
     },
-    filterBySeveral(values: string[], propertyName: string): void {
-      this.products = getProducts().filter((product) =>
-        values.includes(product[propertyName]),
+    filterBySeveral: function (values: string[] | number[] | boolean[], propertyName: productKeys): void {
+      this.products = getProducts().filter((product:product) => {
+            let productPropertyValue:string = product[propertyName]?.toString() || '';
+            return values.includes(productPropertyValue);
+          }
       );
     },
     resetProducts() {

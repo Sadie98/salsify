@@ -1,24 +1,26 @@
-export const products = [
+import {product} from "@/types/types.ts";
+
+export const products: product[] = [
   {
     "Product Name": "Headphones",
     color: "black",
     "weight (oz)": 5,
     category: "electronics",
-    wireless: "false",
+    wireless: false,
   },
   {
     "Product Name": "Cell Phone",
     color: "black",
     "weight (oz)": 3,
     category: "electronics",
-    wireless: "true",
+    wireless: true,
   },
   {
     "Product Name": "Keyboard",
     color: "grey",
     "weight (oz)": 5,
     category: "electronics",
-    wireless: "false",
+    wireless: false,
   },
   {
     "Product Name": "Cup",
